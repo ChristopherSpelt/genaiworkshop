@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=asiel
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=test
+    
+    volumes:
+      - ./db/1_init_schema.sql:/docker-entrypoint-initdb.d/1.sql
+      - ./db/2_init_data.sql:/docker-entrypoint-initdb.d/2.sql
+    ports:
+      - "5432:5432"
+                     
